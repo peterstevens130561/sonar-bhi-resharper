@@ -7,6 +7,7 @@ import java.util.List;
 import org.sonar.api.SonarPlugin;
 
 import com.stevpet.sonar.plugins.dotnet.resharper.inspectcode.ReSharperCommandBuilder;
+import com.stevpet.sonar.plugins.dotnet.resharper.issuesparser.DefaultInspectCodeResultsParser;
 import com.stevpet.sonar.plugins.dotnet.resharper.issuesparser.DefaultIssueValidator;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileExporter;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileImporter;
@@ -28,6 +29,7 @@ public class ReSharperPlugin extends SonarPlugin {
                 DefaultInspectCodeIssuesSaver.class,
                 InspectCodeBatchData.class,
                 DefaultInspectCodeRunner.class,
+                DefaultInspectCodeResultsParser.class,
                 DefaultIssueValidator.class,
                 DefaultReSharperWorkflow.class,
                 ReSharperSensor.class);
