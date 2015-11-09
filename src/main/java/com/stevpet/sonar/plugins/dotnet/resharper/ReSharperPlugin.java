@@ -13,6 +13,7 @@ import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharpe
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileImporter;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.ReSharperSonarWayProfileCSharp;
 import com.stevpet.sonar.plugins.dotnet.resharper.saver.DefaultInspectCodeIssuesSaver;
+import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.implementation.SimpleMicrosoftWindowsEnvironment;
 
 public class ReSharperPlugin extends SonarPlugin {
 
@@ -21,6 +22,7 @@ public class ReSharperPlugin extends SonarPlugin {
         List imported=Arrays.asList();
         List exported=Arrays.asList(
                 ReSharperConfiguration.class,
+                SimpleMicrosoftWindowsEnvironment.class,
                 CSharpRegularReSharperProfileExporter.class,
                 CSharpRegularReSharperProfileImporter.class,
                 ReSharperSonarWayProfileCSharp.class,
