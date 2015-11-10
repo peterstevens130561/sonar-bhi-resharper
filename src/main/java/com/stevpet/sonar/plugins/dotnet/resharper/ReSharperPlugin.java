@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.sonar.api.SonarPlugin;
 
+import com.stevpet.sonar.plugins.common.commandexecutor.DefaultProcessLock;
+import com.stevpet.sonar.plugins.common.commandexecutor.LockedWindowsCommandLineExecutor;
 import com.stevpet.sonar.plugins.dotnet.resharper.inspectcode.ReSharperCommandBuilder;
 import com.stevpet.sonar.plugins.dotnet.resharper.issuesparser.DefaultInspectCodeResultsParser;
 import com.stevpet.sonar.plugins.dotnet.resharper.issuesparser.DefaultIssueValidator;
@@ -34,6 +36,8 @@ public class ReSharperPlugin extends SonarPlugin {
                 DefaultInspectCodeResultsParser.class,
                 DefaultIssueValidator.class,
                 DefaultReSharperWorkflow.class,
+                DefaultProcessLock.class,
+                LockedWindowsCommandLineExecutor.class,
                 ReSharperSensor.class);
         List extensions = new ArrayList();
         extensions.addAll(imported);
