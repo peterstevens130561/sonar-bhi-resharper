@@ -146,7 +146,7 @@ public class DefaultInspectCodeRunner implements InspectCodeRunner {
         }
         File inspectCodeFile = new File(dir, RESHARPER_EXECUTABLE);
         if (!inspectCodeFile.exists()) {
-            String message = "inspectcode not found in" + inspectCodeFile.getAbsolutePath() + "check property " + ReSharperConfiguration.INSTALL_DIR_KEY ;
+            String message = "inspectcode not found in " + inspectCodeFile.getAbsolutePath() + " check property " + ReSharperConfiguration.INSTALL_DIR_KEY ;
             Log.error(message);
             throw new SonarException(message);
         }

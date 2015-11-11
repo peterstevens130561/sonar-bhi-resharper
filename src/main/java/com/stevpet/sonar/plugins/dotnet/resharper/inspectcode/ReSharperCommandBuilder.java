@@ -71,6 +71,7 @@ public class ReSharperCommandBuilder implements BatchExtension,ShellCommand{
 	}
 
 	public void setSolution(VisualStudioSolution visualStudioSolution) {
+		if(visualStudioSolution==null ) { throw new IllegalArgumentException("visualStudioSolution");}
 	    this.solution=visualStudioSolution;
 	}
 	
@@ -85,6 +86,7 @@ public class ReSharperCommandBuilder implements BatchExtension,ShellCommand{
 	 * @return the current builder
 	 */
 	public ReSharperCommandBuilder setReportFile(File reportFile) {
+		if(reportFile==null) { throw new IllegalArgumentException("reportFile");}
 		this.resharperReportFile = reportFile;
 		return this;
 	}
@@ -97,6 +99,7 @@ public class ReSharperCommandBuilder implements BatchExtension,ShellCommand{
 	 * 
 	 */
 	public void setExecutable(File executable) {
+		if(executable==null) { throw new IllegalArgumentException("executable");}
 		this.executable = executable;
 	}
 
