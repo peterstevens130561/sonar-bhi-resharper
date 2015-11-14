@@ -11,6 +11,15 @@ if %errorlevel% neq 0 (
 	exit /b %errorlevel%
 )
 
+cd ../sonar-dotnet-projectbuilder
+call mvn -U clean install -q 
+if %errorlevel% neq 0 (
+	ECHO "**** BUILD FAILED"
+	CD %CURDIR%
+	exit /b %errorlevel%
+)
+COPY target\sonar-dotnet-projectbuilder-*.jar  %DEST%
+
 cd ../sonar-mscover
 call mvn clean install -q -DskipTests=true
 if %errorlevel% neq 0 (
