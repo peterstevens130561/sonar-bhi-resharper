@@ -26,7 +26,7 @@ import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
 import org.sonar.api.utils.SonarException;
 
-import com.stevpet.sonar.plugins.dotnet.resharper.DefaultReSharperWorkflow;
+import com.stevpet.sonar.plugins.dotnet.resharper.ReSharperWorkflowBase;
 import com.stevpet.sonar.plugins.dotnet.resharper.InspectCodeIssue;
 import com.stevpet.sonar.plugins.dotnet.resharper.InspectCodeRunner;
 import com.stevpet.sonar.plugins.dotnet.resharper.ReSharperConfiguration;
@@ -55,7 +55,7 @@ public class ReSharperSensorTest {
     @Before
     public void before() {
         org.mockito.MockitoAnnotations.initMocks(this);
-        reSharperWorkflow = new DefaultReSharperWorkflow(inspectCodeResultsParser, inspectCodeIssuesSaver, inspectCodeRunner,issueValidator);
+        reSharperWorkflow = new ReSharperWorkflowBase(inspectCodeResultsParser, inspectCodeIssuesSaver, inspectCodeRunner,issueValidator);
         sensor = new ReSharperSensor(fileSystem, settings, reSharperWorkflow ,resharperConfiguration);
         languages = new TreeSet<String>();
         when(fileSystem.languages()).thenReturn(languages);

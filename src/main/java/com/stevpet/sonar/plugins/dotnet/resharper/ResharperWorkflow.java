@@ -1,9 +1,8 @@
 package com.stevpet.sonar.plugins.dotnet.resharper;
 
-import org.sonar.api.BatchExtension;
 import org.sonar.api.resources.Project;
 
-public interface ResharperWorkflow extends BatchExtension {
+public interface ResharperWorkflow {
 
     /**
      * Should perform what is needed to get the resharper issues into the current project. For the

@@ -9,15 +9,9 @@ import org.sonar.api.Property;
 import org.sonar.api.PropertyType;
 import org.sonar.api.SonarPlugin;
 
-import com.stevpet.sonar.plugins.common.commandexecutor.DefaultProcessLock;
-import com.stevpet.sonar.plugins.common.commandexecutor.LockedWindowsCommandLineExecutor;
-import com.stevpet.sonar.plugins.dotnet.resharper.inspectcode.ReSharperCommandBuilder;
-import com.stevpet.sonar.plugins.dotnet.resharper.issuesparser.DefaultInspectCodeResultsParser;
-import com.stevpet.sonar.plugins.dotnet.resharper.issuesparser.DefaultIssueValidator;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileExporter;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileImporter;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.ReSharperSonarWayProfileCSharp;
-import com.stevpet.sonar.plugins.dotnet.resharper.saver.DefaultInspectCodeIssuesSaver;
 import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.implementation.SimpleMicrosoftWindowsEnvironment;
 @Properties({
 @Property(key = ReSharperConfiguration.MODE, defaultValue = "", name = "ReSharper activation mode", description = "Possible values : empty (means active), 'skip' and 'reuseReport'.", global = false, project = false, type = PropertyType.SINGLE_SELECT_LIST, options = {
@@ -43,15 +37,9 @@ public class ReSharperPlugin extends SonarPlugin {
                 CSharpRegularReSharperProfileImporter.class,
                 ReSharperSonarWayProfileCSharp.class,
                 ReSharperRuleRepositoryProvider.class, 
-                ReSharperCommandBuilder.class,
-                DefaultInspectCodeIssuesSaver.class,
                 InspectCodeBatchData.class,
-                DefaultInspectCodeRunner.class,
-                DefaultInspectCodeResultsParser.class,
-                DefaultIssueValidator.class,
+
                 DefaultReSharperWorkflow.class,
-                DefaultProcessLock.class,
-                LockedWindowsCommandLineExecutor.class,
                 ReSharperSensor.class);
         List extensions = new ArrayList();
         extensions.addAll(imported);
