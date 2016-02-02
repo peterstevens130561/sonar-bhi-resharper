@@ -12,7 +12,7 @@ import org.sonar.api.SonarPlugin;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileExporter;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.CSharpRegularReSharperProfileImporter;
 import com.stevpet.sonar.plugins.dotnet.resharper.profiles.ReSharperSonarWayProfileCSharp;
-import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.implementation.SimpleMicrosoftWindowsEnvironment;
+import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.implementation.DefaultMicrosoftWindowsEnvironment;
 @Properties({
 @Property(key = ReSharperConfiguration.MODE, defaultValue = "", name = "ReSharper activation mode", description = "Possible values : empty (means active), 'skip' and 'reuseReport'.", global = false, project = false, type = PropertyType.SINGLE_SELECT_LIST, options = {
         "skip", "reuseReport" }),
@@ -32,7 +32,7 @@ public class ReSharperPlugin extends SonarPlugin {
         List imported=Arrays.asList();
         List exported=Arrays.asList(
                 ReSharperConfiguration.class,
-                SimpleMicrosoftWindowsEnvironment.class,
+                DefaultMicrosoftWindowsEnvironment.class,
                 CSharpRegularReSharperProfileExporter.class,
                 CSharpRegularReSharperProfileImporter.class,
                 ReSharperSonarWayProfileCSharp.class,
