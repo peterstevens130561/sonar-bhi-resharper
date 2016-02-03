@@ -16,6 +16,7 @@ import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.eq;
 
+import org.slf4j.Logger;
 import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.issue.Issuable;
 import org.sonar.api.issue.Issuable.IssueBuilder;
@@ -44,10 +45,11 @@ public class DefaultInspectCodeIssuesSaverTest {
     @Mock private Issue issue;
     private  File testFile=TestUtils.getResource(TESTS_SOURCEFILE);
     @Mock private VisualStudioSolution solution;
+    @Mock private Logger log;
     @Before
     public void before() {
         initMocks(this);
-        saver = new DefaultInspectCodeIssuesSaver(resourcePerspectives, microsoftWindowsEnvironment);
+        saver = new DefaultInspectCodeIssuesSaver(resourcePerspectives, microsoftWindowsEnvironment,log);
         when(resourcePerspectives.as(eq(Issuable.class),any(Resource.class))).thenReturn( issuable);
         when(issuable.newIssueBuilder()).thenReturn(issueBuilder);
         when(issueBuilder.message(anyString())).thenReturn(issueBuilder);
@@ -91,11 +93,21 @@ public class DefaultInspectCodeIssuesSaverTest {
     @Test
     public void inProject_MessageExceptionThrownAndCaught() {
         List<InspectCodeIssue> inspectCodeIssues = createNormalIssue();
-
-        saver.saveIssues(inspectCodeIssues);
-        MessageException.of("some error");
         when(issuable.addIssue(issue)).thenThrow(MessageException.of("some error"));
+        saver.saveIssues(inspectCodeIssues);
+
         verify(issuable,times(1)).addIssue(issue);
+    }
+    
+    @Test
+    public void inProject_RuleNotDefined() {
+    	String ruleNotDefinedMessage="The rule 'resharper-cs:RedundantComparisonWithNull' does not exist.";
+        List<InspectCodeIssue> inspectCodeIssues = createNormalIssue();
+
+        when(issuable.addIssue(issue)).thenThrow(MessageException.of(ruleNotDefinedMessage));
+        saver.saveIssues(inspectCodeIssues);
+        verify(issuable,times(1)).addIssue(issue);
+        verify(log,times(1)).error(anyString());
     }
 
     private List<InspectCodeIssue> createNormalIssue() {

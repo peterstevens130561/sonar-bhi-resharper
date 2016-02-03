@@ -1,6 +1,8 @@
 package com.stevpet.sonar.plugins.dotnet.resharper.saver;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +19,7 @@ import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.MicrosoftWindowsEnviro
 
 public class DefaultInspectCodeIssuesSaver implements InspectCodeIssuesSaver {
 
-    private Logger Log = LoggerFactory.getLogger(DefaultInspectCodeIssuesSaver.class);
+    protected Logger log = LoggerFactory.getLogger(DefaultInspectCodeIssuesSaver.class);
     private ResourcePerspectives resourcePerspectives;
     private MicrosoftWindowsEnvironment microsoftWindowsEnvironment;
     public DefaultInspectCodeIssuesSaver(ResourcePerspectives resourcePerspectives, MicrosoftWindowsEnvironment microsoftWindowsEnvironment) {
@@ -25,6 +27,17 @@ public class DefaultInspectCodeIssuesSaver implements InspectCodeIssuesSaver {
         this.microsoftWindowsEnvironment = microsoftWindowsEnvironment;
     }
 
+    /**
+     * Also injects the logger, for testing purposes only
+     * @param resourcePerspectives
+     * @param microsoftWindowsEnvironment
+     * @param log
+     */
+    DefaultInspectCodeIssuesSaver(ResourcePerspectives resourcePerspectives, MicrosoftWindowsEnvironment microsoftWindowsEnvironment,Logger log) {
+        this.resourcePerspectives = resourcePerspectives;
+        this.microsoftWindowsEnvironment = microsoftWindowsEnvironment;
+        this.log = log;
+    }
     @Override
     public void saveIssues(List<InspectCodeIssue> issues) {
         for (InspectCodeIssue issue : issues) {
@@ -61,7 +74,7 @@ public class DefaultInspectCodeIssuesSaver implements InspectCodeIssuesSaver {
 
     private void saveIssuable(InspectCodeIssue inspectCodeIssue, String relativePath) {
         if(isIssueOfTestFile(inspectCodeIssue)) {
-            Log.debug("ignoring test file {}",relativePath);
+            log.debug("ignoring test file {}",relativePath);
             return;
         }
         Issuable issuable = createIssuable(relativePath);
@@ -78,7 +91,18 @@ public class DefaultInspectCodeIssuesSaver implements InspectCodeIssuesSaver {
         try {
             issuable.addIssue(issue);
         } catch (MessageException e) {
-            Log.warn("exception thrown during saving issue: ",e.getMessage());
+            log.warn("exception thrown during saving issue: {} ",e.getMessage());
+            Pattern pattern = Pattern.compile("The rule 'resharper-cs:(.*)' does not exist.");
+            Matcher matcher = pattern.matcher(e.getMessage());
+            if(matcher.find()) {
+            	String missingRule=matcher.group(1);
+            	StringBuilder sb = new StringBuilder();
+            	sb.append("The rule '").append(missingRule).append("' is missing from the SonarQube Re# ruleset, and has to be added\n")
+            	.append(" to the plugin. See src/main/java/resources/ReSharper/DefaultRules.ReSharper");
+            	log.error(sb.toString());
+            }
+            
+            
         }
     }
 
@@ -87,12 +111,12 @@ public class DefaultInspectCodeIssuesSaver implements InspectCodeIssuesSaver {
         
         File myResource = File.create(relativePath);
         if (myResource == null) {
-            Log.debug("could not resolve " + relativePath);
+            log.debug("could not resolve " + relativePath);
             return null;
         }
         Issuable issuable = resourcePerspectives.as(Issuable.class, myResource);
         if (issuable == null) {
-            Log.debug("could not create issuable for " + relativePath);
+            log.debug("could not create issuable for " + relativePath);
             return null;
         }
         return issuable;

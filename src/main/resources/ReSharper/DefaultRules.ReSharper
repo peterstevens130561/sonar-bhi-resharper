@@ -811,5 +811,6 @@
     <IssueType Id="Xaml.XKeyAttributeDisallowed" Category="Potential Code Quality Issues" Description="x:Key is allowed for resources and dictionary elements only" Severity="ERROR" />
     <IssueType Id="Xaml.XamlRelativeSourceDefaultModeWarningHighlighting" Category="Potential Code Quality Issues" Description="RelativeSourceMode is not set explicitly" Severity="WARNING" />
     <IssueType Id="XmlDocCommentSyntaxProblem" Category="Potential Code Quality Issues" Description="Illegal syntax in XML code comment" Severity="WARNING" />
+    <IssueType Id="RedundantDefaultFieldInitializer" Category="Redundancies in Code" Description="C# already initializes field, explicit initialization is therefore redundant" Severity="SUGGESTION" />
   </IssueTypes>
 </Report>
