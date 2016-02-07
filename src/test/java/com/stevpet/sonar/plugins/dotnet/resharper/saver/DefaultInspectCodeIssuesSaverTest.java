@@ -46,6 +46,7 @@ public class DefaultInspectCodeIssuesSaverTest {
     private  File testFile=TestUtils.getResource(TESTS_SOURCEFILE);
     @Mock private VisualStudioSolution solution;
     @Mock private Logger log;
+    
     @Before
     public void before() {
         initMocks(this);
