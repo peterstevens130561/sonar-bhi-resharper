@@ -27,7 +27,8 @@ import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.implementation.Default
 })
 public class ReSharperPlugin extends SonarPlugin {
 
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public List getExtensions() {
         List imported=Arrays.asList();
         List exported=Arrays.asList(
