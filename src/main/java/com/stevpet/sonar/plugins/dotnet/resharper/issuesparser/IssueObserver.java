@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.stevpet.sonar.plugins.common.api.parser.BaseParserObserver;
 import com.stevpet.sonar.plugins.common.api.parser.annotations.AttributeMatcher;
+import com.stevpet.sonar.plugins.common.parser.observerdsl.TopLevelObserverRegistrar;
 import com.stevpet.sonar.plugins.dotnet.resharper.InspectCodeIssue;
 
 public class IssueObserver extends BaseParserObserver {
@@ -51,4 +52,8 @@ public class IssueObserver extends BaseParserObserver {
         issue.setMessage(value);
         issues.add(issue);
     }
+
+	@Override
+	public void registerObservers(TopLevelObserverRegistrar registrar) {
+	}
 }

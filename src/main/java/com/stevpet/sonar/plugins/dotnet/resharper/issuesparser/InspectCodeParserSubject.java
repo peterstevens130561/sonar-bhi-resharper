@@ -1,6 +1,5 @@
 package com.stevpet.sonar.plugins.dotnet.resharper.issuesparser;
 
-import com.stevpet.sonar.plugins.common.parser.XmlParserSubject;
 
 public class InspectCodeParserSubject extends XmlParserSubject  {
     

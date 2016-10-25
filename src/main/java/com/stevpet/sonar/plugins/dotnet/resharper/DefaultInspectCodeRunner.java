@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.config.Settings;
-import org.sonar.api.utils.SonarException;
+
 import org.sonar.api.utils.command.CommandException;
 
 import com.stevpet.sonar.plugins.common.api.CommandLineExecutor;
@@ -148,7 +148,7 @@ public class DefaultInspectCodeRunner implements InspectCodeRunner {
         if (!inspectCodeFile.exists()) {
             String message = "inspectcode not found in " + inspectCodeFile.getAbsolutePath() + " check property " + ReSharperConfiguration.INSTALL_DIR_KEY ;
             Log.error(message);
-            throw new SonarException(message);
+            throw new IllegalStateException(message);
         }
         return inspectCodeFile;
     }

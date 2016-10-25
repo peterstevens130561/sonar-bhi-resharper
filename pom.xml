@@ -5,7 +5,7 @@
   <groupId>com.stevpet.sonar</groupId>
   <artifactId>sonar-resharper-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>5.0-SNAPSHOT</version>
 
   <name>Resharper Plugin</name>
 
@@ -17,17 +17,23 @@
   </properties>
 
   <dependencies>
+   <dependency>
+    <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+    <artifactId>sonar-packaging-maven-plugin</artifactId>
+    <version>1.17</version>
+    <scope>provided</scope>
+</dependency>
     <dependency>
-      <groupId>org.codehaus.sonar</groupId>
+      <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-plugin-api</artifactId>
-      <version>4.2</version>
+      <version>5.6.3</version>
       <scope>provided</scope>
     </dependency>
-    
+
     <dependency>
-        <groupId>org.codehaus.sonar</groupId>
+        <groupId>org.sonarsource.sonarqube</groupId>
     <artifactId>sonar-core</artifactId>
-    <version>4.1-SNAPSHOT</version>
+    <version>5.6.3</version>
     </dependency>
         <dependency>
       <groupId>org.powermock</groupId>
@@ -42,12 +48,14 @@
       <scope>test</scope>
 	</dependency>
     <!-- unit tests -->
-    <dependency>
-      <groupId>org.codehaus.sonar</groupId>
-      <artifactId>sonar-testing-harness</artifactId>
-      <version>${sonar.buildVersion}</version>
-      <scope>test</scope>
-    </dependency>
+<!-- https://mvnrepository.com/artifact/org.codehaus.sonar/sonar-testing-harness -->
+<dependency>
+    <groupId>org.codehaus.sonar</groupId>
+    <artifactId>sonar-testing-harness</artifactId>
+    <version>5.1</version>
+    <scope>test</scope>
+</dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -86,9 +94,9 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.sonar</groupId>
+        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
         <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.3</version>
+        <version>1.17</version>
         <extensions>true</extensions>
         <configuration>
           <pluginClass>com.stevpet.sonar.plugins.dotnet.resharper.ReSharperPlugin</pluginClass>
@@ -172,12 +180,12 @@
 
   <description>Plugin to report test / code coverage for ms environment</description>
   <scm>
-	<url>scm:git:https://github.com/peterstevens130561/sonar-bhi-resharper</url>
-  	<developerConnection>scm:git:https://github.com/peterstevens130561</developerConnection>
+	<url>https://github.com/peterstevens130561/sonar-bhi-resharper</url>
+  	<developerConnection>https://github.com/peterstevens130561</developerConnection>
   </scm>
   <url>https://github.com/peterstevens130561/sonar-bhi-resharper</url>
   <organization>
   	<name>Baker Hughes Reservoir Software B.V. Delft Netherlands</name>
-  	<url>www.bakerhughes.com</url>
+  	<url>http://www.bakerhughes.com</url>
   </organization>
 </project>

@@ -16,7 +16,7 @@ import static org.mockito.Mockito.times;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
-import org.sonar.api.utils.SonarException;
+
 import org.sonar.test.TestUtils;
 
 import com.stevpet.sonar.plugins.common.api.CommandLineExecutor;
@@ -51,11 +51,11 @@ public class DefaultInspectCodeRunnerTest {
     public void noArgumentsExpectException() {
         try {
         inspectCodeRunner.inspectCode();
-        } catch ( SonarException e ) {
+        } catch ( IllegalStateException e ) {
             assertTrue("should fail on inspectCode not found",e.getMessage().contains("inspectcode not found"));
             return;
         }
-        fail("should have failed with SonarException");
+        fail("should have failed with IllegalStateException");
     }
     
     @Test

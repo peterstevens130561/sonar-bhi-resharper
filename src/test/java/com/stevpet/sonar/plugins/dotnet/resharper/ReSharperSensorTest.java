@@ -24,7 +24,7 @@ import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
-import org.sonar.api.utils.SonarException;
+
 
 import com.stevpet.sonar.plugins.dotnet.resharper.ReSharperWorkflowBase;
 import com.stevpet.sonar.plugins.dotnet.resharper.InspectCodeIssue;
@@ -164,10 +164,10 @@ public class ReSharperSensorTest {
     @Test
     public void throwException() {
         when(resharperConfiguration.failOnException()).thenReturn(true);
-        when(inspectCodeRunner.inspectCode()).thenThrow(new SonarException("rethrow me"));
+        when(inspectCodeRunner.inspectCode()).thenThrow(new IllegalStateException("rethrow me"));
         try {
             sensor.analyse(project, context);
-        } catch (SonarException e) {
+        } catch (IllegalStateException e) {
             return;
         }
         fail("should have thrown exception, as set to fail");
@@ -177,10 +177,10 @@ public class ReSharperSensorTest {
     @Test
     public void catchException() {
         when(resharperConfiguration.failOnException()).thenReturn(false);
-        when(inspectCodeRunner.inspectCode()).thenThrow(new SonarException("do not rethrow me"));
+        when(inspectCodeRunner.inspectCode()).thenThrow(new IllegalStateException("do not rethrow me"));
         try {
             sensor.analyse(project, context);
-        } catch (SonarException e) {
+        } catch (IllegalStateException e) {
             fail("should not have rethrown exception");
         }
         verify(inspectCodeResultsParser,times(0)).parse(any(File.class));

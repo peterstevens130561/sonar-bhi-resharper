@@ -24,7 +24,7 @@ import org.apache.commons.lang.StringUtils;
 import org.sonar.api.profiles.ProfileExporter;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.ActiveRule;
-import org.sonar.api.utils.SonarException;
+
 
 import com.stevpet.sonar.plugins.dotnet.resharper.ReSharperConfiguration;
 
@@ -52,7 +52,7 @@ public abstract class ReSharperProfileExporter extends ProfileExporter {
         try {
             printRules(profile, writer);
         } catch (IOException e) {
-            throw new SonarException("Error while generating the ReSharper profile to export: " + profile, e);
+            throw new IllegalStateException("Error while generating the ReSharper profile to export: " + profile, e);
         }
     }
 

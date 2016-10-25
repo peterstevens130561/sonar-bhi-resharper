@@ -1,11 +1,11 @@
 package com.stevpet.sonar.plugins.dotnet.resharper.exceptions;
 
-import org.sonar.api.utils.SonarException;
+
 
 /**
  * In general this class should be inherited to give a precise exception. It will be caught at the sensor analyse
  */
-public class InspectCodeException extends SonarException {
+public class InspectCodeException extends IllegalStateException {
 
     private static final long serialVersionUID = 1L;
 
