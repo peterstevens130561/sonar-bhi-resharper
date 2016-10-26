@@ -19,8 +19,8 @@
  */
 package com.stevpet.sonar.plugins.dotnet.resharper.profiles;
 
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.sonar.api.profiles.ProfileExporter;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.ActiveRule;
@@ -85,27 +85,28 @@ public abstract class ReSharperProfileExporter extends ProfileExporter {
  
         writer.append("    <IssueType");
         writer.append(" Id=\"");
-        StringEscapeUtils.escapeXml(writer, resharperRule.getId());
+        writer.append(StringEscapeUtils.escapeXml(resharperRule.getId()));
+
         
         writer.append("\" Enabled=\"");
-        StringEscapeUtils.escapeXml(writer, String.valueOf(resharperRule.isEnabled()));
+        writer.append(StringEscapeUtils.escapeXml(String.valueOf(resharperRule.isEnabled())));
 
         String category = resharperRule.getCategory();
         if (category != null && !StringUtils.isBlank(category)) {
             writer.append("\" Category=\"");
-            StringEscapeUtils.escapeXml(writer, category);
+            writer.append(StringEscapeUtils.escapeXml(category));
         }
 
         String wiki = resharperRule.getWikiLink();
         if (wiki != null && !StringUtils.isBlank(wiki)) {
             writer.append("\" WikiUrl=\"");
-            StringEscapeUtils.escapeXml(writer, wiki);
+            writer.append(StringEscapeUtils.escapeXml( wiki));
         }
 
         writer.append("\" Description=\"");
-        StringEscapeUtils.escapeXml(writer, resharperRule.getDescription());
+        writer.append(StringEscapeUtils.escapeXml(resharperRule.getDescription()));
         writer.append("\" Severity=\"");
-        StringEscapeUtils.escapeXml(writer, resharperRule.getSeverity().toString());
+        writer.append(StringEscapeUtils.escapeXml(resharperRule.getSeverity().toString()));
         writer.append("\"/>\n");
     }
 

@@ -68,6 +68,6 @@ public class ReSharperRuleRepositoryTest {
 	
 	private void assertRepositoryIsComplete(List<Rule> rules) {
 		assertNotNull("expect list of rules",rules);
-        assertEquals("rules to be found in defaultrules",809,rules.size());
+        assertEquals("rules to be found in defaultrules",810,rules.size());
 	}
 }

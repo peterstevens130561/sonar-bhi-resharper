@@ -89,7 +89,7 @@ public class ReSharperFileParser {
                         rule.setSeverity(ReSharperSeverity.valueOf(severity));
                     } catch (Exception ex) {
                         rule.setSeverity(ReSharperSeverity.WARNING);
-                        String logMsg = "exception while parsing resharper severity '" + severity +"': " + ex.getMessage();
+                        String logMsg = "exception while parsing resharper severity '" + severity +"': " + " on rule " + ruleId + " "  + ex.getMessage();
                         logWarningMessage(logMsg);
                     }
                     result.add(rule);
