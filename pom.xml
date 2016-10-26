@@ -26,15 +26,10 @@
     <dependency>
       <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-plugin-api</artifactId>
-      <version>5.6</version>
       <scope>provided</scope>
+      <version>5.2</version>
     </dependency>
 
-    <dependency>
-        <groupId>org.sonarsource.sonarqube</groupId>
-    <artifactId>sonar-core</artifactId>
-    <version>5.6</version>
-    </dependency>
         <dependency>
       <groupId>org.powermock</groupId>
       <artifactId>powermock-module-junit4</artifactId>
@@ -76,7 +71,7 @@
        <dependency>
        	<groupId>com.stevpet.sonar</groupId>
        	<artifactId>plugins-dotnet-utils</artifactId>
-       	<version>3.2-SNAPSHOT</version>
+       	<version>4.0-SNAPSHOT</version>
        </dependency>
                <dependency>
             <groupId>com.sun.jersey</groupId>
@@ -86,7 +81,6 @@
                <dependency>
                	<groupId>com.stevpet.sonar</groupId>
                	<artifactId>sonar-mscover-plugin</artifactId>
-               	<scope>provided</scope>
                	<version>3.3.2-RC16092091046</version>
                </dependency>
                <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
@@ -95,7 +89,22 @@
     <artifactId>commons-lang3</artifactId>
     <version>3.4</version>
 </dependency>
-               
+             <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>19.0</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+<dependency>
+    <groupId>com.google.code.findbugs</groupId>
+    <artifactId>jsr305</artifactId>
+    <version>3.0.1</version>
+</dependency>  
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.5</version>
+</dependency>
   </dependencies>
 
   <build>

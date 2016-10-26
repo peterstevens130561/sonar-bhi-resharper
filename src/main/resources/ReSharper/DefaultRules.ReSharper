@@ -558,7 +558,7 @@
     <IssueType Id="StringLastIndexOfIsCultureSpecific.3" Category="Common Practices and Code Improvements" SubCategory="String.LastIndexOf is culture-specific" Description="String.LastIndexOf is culture-specific: String.LastIndexOf(string, int) is culture-specific" Severity="WARNING" />
     <IssueType Id="StringLiteralWrongQuotes" Category="Code Style" Description="Non-compliant quotes around string literal" Severity="HINT" />
     <IssueType Id="StringStartsWithIsCultureSpecific" Category="Common Practices and Code Improvements" SubCategory="String.StartsWith is culture-specific" Description="String.StartsWith is culture-specific: String.StartsWith(string) is culture-specific" Severity="DO_NOT_SHOW" />
-    <IssueType Id="StructuralSearch" Category="Structural Search Highlightings" Description="Structural Search Pattern" Severity="INVALID_SEVERITY" />
+    <IssueType Id="StructuralSearch" Category="Structural Search Highlightings" Description="Structural Search Pattern" Severity="DO_NOT_SHOW" />
     <IssueType Id="SuggestBaseTypeForParameter" Category="Common Practices and Code Improvements" Description="Parameter can be declared with base type" Severity="HINT" />
     <IssueType Id="SuggestVarOrType_BuiltInTypes" Category="Code Style" SubCategory="Use preferred 'var' style" Description="Use preferred 'var' style: For built-in types" Severity="HINT" />
     <IssueType Id="SuggestVarOrType_Elsewhere" Category="Code Style" SubCategory="Use preferred 'var' style" Description="Use preferred 'var' style: Elsewhere" Severity="HINT" />

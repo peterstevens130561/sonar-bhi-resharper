@@ -52,12 +52,14 @@ public class ReSharperSonarWayProfile extends ProfileDefinition {
         RulesProfile profile = profileImporter.importProfile(
                 new InputStreamReader(getClass().getResourceAsStream(ReSharperConfiguration.DEFAULT_RULES)), messages);
         profile.setLanguage(languageKey);
+        /*
         AllCustomSeveritiesProvidersMerger merger = new AllCustomSeveritiesProvidersMerger() ;
         merger.setSettings(settings);
         merger.setProfile(profile);
         merger.merge();
         profile.setName(merger.getProfileName());
-
+		*/
+        profile.setName(ReSharperConfiguration.PROFILE_DEFAULT);
         return profile;
     }
 
