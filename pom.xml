@@ -87,7 +87,7 @@
                	<groupId>com.stevpet.sonar</groupId>
                	<artifactId>sonar-mscover-plugin</artifactId>
                	<scope>provided</scope>
-               	<version>3.3-SNAPSHOT</version>
+               	<version>3.3.2-RC16092091046</version>
                </dependency>
   </dependencies>
 

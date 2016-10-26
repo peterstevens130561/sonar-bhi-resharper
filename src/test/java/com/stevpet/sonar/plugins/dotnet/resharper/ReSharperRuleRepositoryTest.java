@@ -30,37 +30,44 @@ public class ReSharperRuleRepositoryTest {
     
     @Test
     public void shouldLoadTheDefaultRules() {
-        RuleRepository ruleRepository = new ReSharperRuleRepository("resharper","cs",settings);
+        List<Rule> rules = createDefaultRuleRepository();
         
-        List<Rule> rules = ruleRepository.createRules();
-        
-        assertNotNull("expect list of rules",rules);
-        assertEquals("rules to be found in defaultrules",809,rules.size());
+        assertRepositoryIsComplete(rules);
         
     }
+
+
     
     @Test
     public void shouldLoadTheCustomRules() {
-        RuleRepository ruleRepository = new ReSharperRuleRepository("resharper","cs",settings);
         when(settings.getString(ReSharperConfiguration.CUSTOM_RULES_PROP_KEY)).thenReturn("bogus");
-        List<Rule> rules = ruleRepository.createRules();
         
-        assertNotNull("expect list of rules",rules);
-        assertEquals("rules to be found in defaultrules",809,rules.size());
+        List<Rule> rules = createDefaultRuleRepository();
+        
+        assertRepositoryIsComplete(rules);
         
     }
     
     @Test
     public void rulesShouldBeUnique() {
-        RuleRepository ruleRepository = new ReSharperRuleRepository("resharper","cs",settings);
-        List<Rule> rules = ruleRepository.createRules();
+        List<Rule> rules = createDefaultRuleRepository();
         Collection<String> ruleKeys = new ArrayList<>();
         for(Rule rule : rules) {
             assertTrue("key should not be in list" + rule.toString(),!ruleKeys.contains(rule.getKey()));
             ruleKeys.add(rule.getKey());
         }
-        assertNotNull("expect list of rules",rules);
-        assertEquals("rules to be found in defaultrules",809,rules.size());
+        assertRepositoryIsComplete(rules);
         
     }
+
+	private List<Rule> createDefaultRuleRepository() {
+		RuleRepository ruleRepository = new ReSharperRuleRepository("resharper","cs",settings);
+        List<Rule> rules = ruleRepository.createRules();
+		return rules;
+	}
+	
+	private void assertRepositoryIsComplete(List<Rule> rules) {
+		assertNotNull("expect list of rules",rules);
+        assertEquals("rules to be found in defaultrules",809,rules.size());
+	}
 }
