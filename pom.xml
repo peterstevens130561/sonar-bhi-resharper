@@ -11,7 +11,7 @@
   <groupId>com.stevpet.sonar</groupId>
   <artifactId>sonar-resharper-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>5.0-SNAPSHOT</version>
+  <version>5.0</version>
 
   <name>Resharper Plugin</name>
 
@@ -20,6 +20,7 @@
     <sonar.buildVersion>5.0</sonar.buildVersion>
     <jdk.min.version>1.7</jdk.min.version>
     <powermock.version>1.4.10</powermock.version>
+    <packaging.version>1.19-SNAPSHOT</packaging.version>
   </properties>
 
   <dependencies>
@@ -27,7 +28,7 @@
 <dependency>
     <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
     <artifactId>sonar-packaging-maven-plugin</artifactId>
-    <version>1.17</version>
+    <version>${packaging.version}</version>
     <scope>provided</scope>
 </dependency>
 
@@ -82,7 +83,7 @@
        <dependency>
        	<groupId>com.stevpet.sonar</groupId>
        	<artifactId>plugins-dotnet-utils</artifactId>
-       	<version>4.0-SNAPSHOT</version>
+       	<version>4.0</version>
        </dependency>
                <dependency>
             <groupId>com.sun.jersey</groupId>
@@ -100,6 +101,13 @@
     <artifactId>commons-lang3</artifactId>
     <version>3.4</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+</dependency>
+
     <dependency>
     <groupId>com.google.guava</groupId>
     <artifactId>guava</artifactId>
@@ -123,7 +131,7 @@
       <plugin>
     <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
     <artifactId>sonar-packaging-maven-plugin</artifactId>
-    <version>1.17</version>
+    <version>${packaging.version}</version>
         <extensions>true</extensions>
         <configuration>
           <pluginClass>com.stevpet.sonar.plugins.dotnet.resharper.ReSharperPlugin</pluginClass>
