@@ -2,6 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.sonarsource.parent</groupId>
+    <artifactId>parent</artifactId>
+    <version>36</version>
+  </parent>
+  
   <groupId>com.stevpet.sonar</groupId>
   <artifactId>sonar-resharper-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
@@ -17,18 +23,23 @@
   </properties>
 
   <dependencies>
-   <dependency>
+<!-- https://mvnrepository.com/artifact/org.sonarsource.sonar-packaging-maven-plugin/sonar-packaging-maven-plugin -->
+<dependency>
     <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
     <artifactId>sonar-packaging-maven-plugin</artifactId>
     <version>1.17</version>
     <scope>provided</scope>
 </dependency>
-    <dependency>
-      <groupId>org.sonarsource.sonarqube</groupId>
-      <artifactId>sonar-plugin-api</artifactId>
-      <scope>provided</scope>
-      <version>5.2</version>
-    </dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api -->
+<dependency>
+    <groupId>org.sonarsource.sonarqube</groupId>
+    <artifactId>sonar-plugin-api</artifactId>
+    <version>5.2</version>
+    <scope>provided</scope>
+</dependency>
+
 
         <dependency>
       <groupId>org.powermock</groupId>
@@ -89,10 +100,10 @@
     <artifactId>commons-lang3</artifactId>
     <version>3.4</version>
 </dependency>
-             <dependency>
+    <dependency>
     <groupId>com.google.guava</groupId>
     <artifactId>guava</artifactId>
-    <version>19.0</version>
+    <version>18.0</version>
     </dependency>
 <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
 <dependency>
@@ -110,9 +121,9 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
-        <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.17</version>
+    <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+    <artifactId>sonar-packaging-maven-plugin</artifactId>
+    <version>1.17</version>
         <extensions>true</extensions>
         <configuration>
           <pluginClass>com.stevpet.sonar.plugins.dotnet.resharper.ReSharperPlugin</pluginClass>
