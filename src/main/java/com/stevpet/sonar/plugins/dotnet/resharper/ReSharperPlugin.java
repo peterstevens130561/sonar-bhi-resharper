@@ -45,7 +45,9 @@ import com.stevpet.sonar.plugins.dotnet.utils.vstowrapper.implementation.Default
 @Property(key=ReSharperConfiguration.BUILD_PLATFORM_KEY, name="Platform",type=PropertyType.STRING,global=true,project=true,defaultValue=ReSharperConfiguration.BUILD_PLATFORM_DEFVALUE)
 })
 public class ReSharperPlugin extends SonarPlugin {
-
+	
+	  public static final String LANGUAGE_KEY = "cs";
+	  public static final String LANGUAGE_NAME = "C#";
     @SuppressWarnings("rawtypes")
 	@Override
     public List getExtensions() {
@@ -56,7 +58,7 @@ public class ReSharperPlugin extends SonarPlugin {
                 CSharpRegularReSharperProfileExporter.class,
                 CSharpRegularReSharperProfileImporter.class,
                 ReSharperSonarWayProfileCSharp.class,
-                ReSharperRuleRepositoryProvider.class, 
+                ReSharperRulesDefinition.class,
                 InspectCodeBatchData.class,
 
                 DefaultReSharperWorkflow.class,

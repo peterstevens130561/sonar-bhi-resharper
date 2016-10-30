@@ -70,25 +70,6 @@ public class ReSharperRuleRepository extends RuleRepository {
             rules.add(rRule.toSonarRule());
         }
 
-        // Custom rules through the Web interface
-        String customRules = settings.getString(ReSharperConfiguration.CUSTOM_RULES_PROP_KEY);
-        if (StringUtils.isNotBlank(customRules)) {
-            try {
-                String customRulesXml = "<Report><IssueTypes>" + customRules + "</IssueTypes></Report>";
-
-                Reader customRulesReader = new StringReader(customRulesXml);
-                List<ReSharperRule> customReSharperRules = parser.parseRules(customRulesReader);
-                for(ReSharperRule rRule: customReSharperRules) {
-                    if(!rules.add(rRule.toSonarRule())) {
-                        LOG.warn("--- could not add " + rRule.toSonarRule().toString());
-                    }
-                }
-            } catch (Exception ex)
-            {
-                LOG.warn("Error parsing ReSharper Custom Rules: " + ex.getMessage());
-            }
-        }
-
         return rules;
     }
 
