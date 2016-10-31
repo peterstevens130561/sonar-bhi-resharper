@@ -82,6 +82,7 @@ public class ReSharperConfiguration implements BatchExtension {
     public static final String BUILD_PLATFORM_DEFVALUE = "x64";
     public static final String FAIL_ON_EXCEPTION_KEY = "sonar.resharper.failonexception";
     public static final String USE_CACHE_KEY="sonar.resharper.usecache";
+	public static final String DEFAULT_MAPPING = "/ReSharper/Mapping.xml";
 
     /**
      * global setting indicates that the analysis should fail when an exception is thrown in the sensor

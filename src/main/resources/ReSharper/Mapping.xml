@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!--comment-->
+<Rules>
+	<Rule Id="AssignNullToNotNullAttribute" RuleType="BUG" DebtRemediationFunction="CONSTANT_ISSUE" DebtRemediationBaseEffort="5m" />
+</Rules>

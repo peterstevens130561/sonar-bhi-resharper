@@ -19,6 +19,7 @@
  */
 package com.stevpet.sonar.plugins.dotnet.resharper;
 
+import org.sonar.api.rule.Severity;
 import org.sonar.api.rules.RulePriority;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,5 +85,18 @@ public class ReSharperUtils {
    }
 
     }
+
+	public static String translateResharperPriorityIntoSonarSeverity(String severity) {
+	       switch (severity) {
+	        case "ERROR":
+	            return Severity.CRITICAL;
+	        case "WARNING":
+	            return Severity.MAJOR;
+	        case "SUGGESTION":
+	            return Severity.MINOR;
+	        default:
+	        	return Severity.INFO ;
+	       }
+	}
 
 }
