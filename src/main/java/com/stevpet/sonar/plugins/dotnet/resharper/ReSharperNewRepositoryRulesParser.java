@@ -29,8 +29,7 @@ import javax.xml.xpath.XPathFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.rule.RuleStatus;
-import org.sonar.api.rules.RuleType;
+import org.sonar.api.server.debt.DebtRemediationFunction;
 import org.sonar.api.server.rule.RulesDefinition.NewRepository;
 import org.sonar.api.server.rule.RulesDefinition.NewRule;
 import org.w3c.dom.Element;
@@ -101,6 +100,8 @@ public class ReSharperNewRepositoryRulesParser implements ReSharperParser {
                     
                     ReSharperRuleAttributes ruleAttributes = rulesAttributes.get(ruleId);
                     newRule.setType(ruleAttributes.getRuleType());
+                    DebtRemediationFunction debtRemediationFunction=ruleAttributes.getDebtRemediationFunction();
+                    newRule.setDebtRemediationFunction(debtRemediationFunction);
                 }
             }
         } catch (XPathExpressionException e) {
@@ -110,15 +111,4 @@ public class ReSharperNewRepositoryRulesParser implements ReSharperParser {
         }
     }
 
-	private String reSharperSeverityToSonarSeverity(String reSharperSeverity) {
-		switch (reSharperSeverity) {
-		case "ERROR" : 
-			return "BLOCKER" ;
-		case "WARNING" :
-			return "CRITICAL" ;
-		default:
-			return "INFO";
-		
-		}
-	}
 }

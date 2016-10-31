@@ -73,7 +73,8 @@ public class ReSharperRulesAttributeParser {
 					String tags = ruleElement.getAttribute("Tags");
 					ruleAttributes.setTags(tags);
 					
-					DebtRemediationFunction debtRemediationFunction = readDebtRemediationFunction(ruleElement);
+					DebtRemediationFunction debtRemediationFunction = DebtRemediationFunctionReader.read(ruleElement);
+					ruleAttributes.setDebtRemediationFunction(debtRemediationFunction);
 				}
 			}
 		} catch (XPathExpressionException e) {
@@ -83,23 +84,5 @@ public class ReSharperRulesAttributeParser {
 		}
 	}
 
-	private DebtRemediationFunction readDebtRemediationFunction(Element ruleElement) {
-		DebtRemediationFunction result=null;
-		String functionName=ruleElement.getAttribute("DebtRemediationFunction") ;
-		if(StringUtils.isEmpty(functionName)) {
-			return result;
-		}
-		DebtRemediationFunction.Type functionType=DebtRemediationFunction.Type.valueOf(functionName);
-		switch (functionType) {
-		case CONSTANT_ISSUE :
-			break;
-		case LINEAR :
-			break;
-		case LINEAR_OFFSET: 
-			break;
-		default : 
-			throw new IllegalStateException("unsupported functionType "+ functionName);
-		}
-		return result;
-	}
+
 }

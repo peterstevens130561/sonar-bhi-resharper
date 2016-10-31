@@ -19,14 +19,16 @@
  */
 package com.stevpet.sonar.plugins.dotnet.resharper;
 
-import org.eclipse.aether.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.sonar.api.rules.RuleType;
+import org.sonar.api.server.debt.DebtRemediationFunction;
 
 public class ReSharperRuleAttributes {
 	private final String id ;
 	private String severity ;
 	private RuleType ruleType= RuleType.CODE_SMELL;
 	private String tags;
+	private DebtRemediationFunction debtRemediationFunction;
 	
 	public  ReSharperRuleAttributes(String id) {
 		this.id=id;
@@ -57,5 +59,13 @@ public class ReSharperRuleAttributes {
 	
 	public String getTags() {
 		return tags;
+	}
+
+	public DebtRemediationFunction getDebtRemediationFunction() {
+		return debtRemediationFunction;
+	}
+
+	public void setDebtRemediationFunction(DebtRemediationFunction debtRemediationFunction) {
+		this.debtRemediationFunction=debtRemediationFunction;
 	}
 }

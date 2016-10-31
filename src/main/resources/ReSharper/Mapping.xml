@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><!--comment-->
 <Rules>
-	<Rule Id="AssignNullToNotNullAttribute" RuleType="BUG" DebtRemediationFunction="CONSTANT_ISSUE" DebtRemediationBaseEffort="5m" />
+	<Rule Id="AssignNullToNotNullAttribute" RuleType="BUG" DebtRemediationFunction="CONSTANT_ISSUE" DebtRemediationBaseEffort="5min" />
+	<Rule
+		Id="ConditionalTernaryEqualBranch" RuleType="BUG"
+		DebtRemediationFunction="CONSTANT_ISSUE"
+		DebtRemediationBaseEffort="5min">
+</Rule>
+	<Rule
+		Id="StringCompareIsCultureSpecific.2" RuleType="BUG"
+		DebtRemediationFunction="CONSTANT_ISSUE"
+		DebtRemediationBaseEffort="5min">
+</Rule>
+	<Rule
+		Id="BaseObjectGetHashCodeCallInGetHashCode" RuleType="BUG"
+		DebtRemediationFunction="LINEAR_OFFSET"
+		DebtRemediationBaseEffort="5min"
+		DebtRemediationGapMultiplier="5min">
+</Rule>
 </Rules>
