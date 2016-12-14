@@ -11,7 +11,7 @@
   <groupId>com.stevpet.sonar</groupId>
   <artifactId>sonar-resharper-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>5.1-SNAPSHOT</version>
+  <version>5.1-RC1612140950</version>
 
   <name>Resharper Plugin</name>
 
@@ -83,7 +83,7 @@
        <dependency>
        	<groupId>com.stevpet.sonar</groupId>
        	<artifactId>plugins-dotnet-utils</artifactId>
-       	<version>4.0</version>
+       	<version>4.1-RC12140820</version>
        </dependency>
                <dependency>
             <groupId>com.sun.jersey</groupId>
